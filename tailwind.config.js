@@ -8,6 +8,9 @@ export default {
       fontFamily: {
         Mitr: ['"Mitr"', 'sans-serif'],
       },
+      colors: {
+        'wrong-guess': '#ff5964',
+      },
     },
   },
   plugins: [],
