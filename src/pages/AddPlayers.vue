@@ -5,7 +5,13 @@
     >
       Add Players
     </p>
-    <q-input class="tw-mt-10" filled v-model="newPlayer.name" label="Enter Name" bg-color="white">
+    <q-input
+      class="tw-mt-10 tw-text-2xl tw-w-64"
+      filled
+      v-model="newPlayer.name"
+      label="Enter Name"
+      bg-color="white"
+    >
       <template v-slot:append>
         <q-icon name="check" @click="addPlayer" class="cursor-pointer" />
       </template>
@@ -32,18 +38,21 @@
         </q-item-section>
       </q-item>
     </q-list>
+    <div class="tw-p-10 tw-flex tw-justify-end tw-w-full">
+      <q-btn color="white" text-color="black" label="Start Game" push class="tw-text-2xl tw-p-4" />
+    </div>
   </q-page>
 </template>
 
 <script setup>
 import { reactive } from 'vue'
 //store a single player containing a name in a players object with add and remove functions
-const newPlayer = reactive({ name: '' })
+const newPlayer = reactive({ name: '', solutions: [], score: 0 })
 const players = reactive([])
 
 const addPlayer = () => {
   if (newPlayer.name) {
-    players.push({ name: newPlayer.name })
+    players.push({ name: newPlayer.name, solutions: [], score: 0 })
     newPlayer.name = ''
   }
 }
