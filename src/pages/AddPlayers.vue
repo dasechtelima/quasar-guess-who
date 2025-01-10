@@ -45,7 +45,12 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, watch } from 'vue'
+//local storage
+import { useQuasar } from 'quasar'
+
+const $q = useQuasar()
+
 //store a single player containing a name in a players object with add and remove functions
 const newPlayer = reactive({ name: '', solutions: [], score: 0 })
 const players = reactive([])
@@ -60,4 +65,12 @@ const addPlayer = () => {
 const removePlayer = (player) => {
   players.splice(players.indexOf(player), 1)
 }
+
+//local storage
+const savedPlayers = $q.localStorage.getItem('players')
+if (savedPlayers) Object.assign(players, savedPlayers)
+
+watch(players, (value) => {
+  $q.localStorage.set('players', value)
+})
 </script>
