@@ -1,7 +1,7 @@
 <template>
   <q-page class="tw-flex tw-items-center tw-flex-col">
     <p
-      class="tw-mt-32 text-primary tw-font-Mitr tw-font-semibold tw-text-6xl tw-w-60 tw-text-center"
+      class="tw-mt-20 text-primary tw-font-Mitr tw-font-semibold tw-text-6xl tw-w-60 tw-text-center"
     >
       Add Players
     </p>
@@ -39,7 +39,14 @@
       </q-item>
     </q-list>
     <div class="tw-p-10 tw-flex tw-justify-end tw-w-full">
-      <q-btn color="white" text-color="black" label="Start Game" push class="tw-text-2xl tw-p-4" />
+      <q-btn
+        @click="$router.push('/flip-phone')"
+        color="white"
+        text-color="black"
+        label="Start Game"
+        push
+        class="tw-text-2xl tw-p-4"
+      />
     </div>
   </q-page>
 </template>
