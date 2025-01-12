@@ -1,0 +1,55 @@
+<template>
+  <q-page class="tw-flex tw-font-Mitr tw-items-center tw-justify-center tw-relative">
+    <q-img src="wrong.svg" class="tw-w-16 tw-absolute tw-top-5 tw-left-5" />
+    <q-img src="correct.svg" class="tw-w-16 tw-absolute tw-bottom-5 tw-left-5" />
+
+    <p class="tw-absolute tw-top-[6px] tw-left-24 tw-text-[60px] tw-text-[#ff5964]">0</p>
+
+    <div class="we-flex tw-items-center tw-justify-center">
+      <p
+       v-if=!status class="text-primary tw-font-Mitr tw-font-semibold tw-text-6xl tw-w-60 tw-text-center removeAfterTimeout"
+      >
+        {{ counter }}
+      </p>
+
+
+      <p
+       v-if=status class=" tw-font-Mitr tw-font-semibold tw-text-6xl tw-text-center removeAfterTimeout"
+      >
+        Person to Guess 
+      </p>
+    </div>
+
+    <p
+      class="tw-absolute tw-font-Mitr tw-font-semibold tw-text-3xl tw-text-white tw-top-5 tw-right-5 removeAfterTimeout"
+    >
+      {{ currentPlayer }}
+    </p>
+
+    <div v-if="status" class="tw-flex tw-col tw-absolute tw-w-40 tw-h-16 tw-bg-white tw-rounded-lg tw-bottom-5 tw-right-5 tw-items-center tw-justify-center">
+        <p class=" tw-font-semibold tw-text-xl tw-text-black">50:50 sek</p>
+
+    </div>
+
+    <p class="tw-absolute tw-bottom-[8px] tw-left-24 tw-text-[60px] tw-text-[#048b79]">0</p>
+  </q-page>
+</template>
+
+<script setup>
+import { useQuasar } from 'quasar'
+import { ref } from 'vue'
+const counter = ref(5)
+const status = ref(false)
+
+
+setInterval(() => {
+  if (counter.value > 0) {
+    counter.value = counter.value - 1
+  }else {
+    status.value = true
+  }
+}, 1000)
+
+const $q = useQuasar()
+const currentPlayer = $q.localStorage.getItem('players')[0]['name']
+</script>
