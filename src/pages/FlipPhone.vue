@@ -15,17 +15,15 @@
 <script setup>
 //get first player from local storage players object
 import { useQuasar } from 'quasar'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 
 const $q = useQuasar()
 const currentPlayer = $q.localStorage.getItem('players')[0]['name']
-const router = useRouter() 
+const router = useRouter()
 
 setTimeout(() => {
   router.push('/game-screen')
-}, 5000) 
-
-
+}, 5000)
 </script>
 
 <style>
