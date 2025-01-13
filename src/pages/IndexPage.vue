@@ -7,7 +7,7 @@
         text-color="black"
         label="Fast Game"
         push
-        class="tw-w-56 tw-text-2xl tw-py-3"
+        class="tw-w-56 tw-text-2xl tw-py-3 tw-hidden"
       />
       <q-btn
         @click="$router.push('/add-players')"
