@@ -64,7 +64,7 @@ const players = reactive([])
 
 const addPlayer = () => {
   if (newPlayer.name) {
-    players.push({ name: newPlayer.name, solutions: [], score: 0 })
+    players.push({ name: newPlayer.name, solutions: [], score: 0, turn: true})
     newPlayer.name = ''
   }
 }

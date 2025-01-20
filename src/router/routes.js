@@ -22,6 +22,11 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [{ path: '', component: () => import('pages/GameScreen.vue') }],
   },
+  {
+    path: '/stats',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [{ path: '', component: () => import('src/pages/StatsScreen.vue') }],
+  },
 
   // Always leave this as last one,
   // but you can also remove it
