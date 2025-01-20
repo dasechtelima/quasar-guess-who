@@ -51,6 +51,7 @@ import { ref } from 'vue'
 import { useTimer } from 'vue-timer-hook';
 import {  watchEffect, onMounted } from "vue";
 import { useRouter } from 'vue-router';
+import { Haptics} from '@capacitor/haptics';
 
 
 
@@ -110,7 +111,9 @@ watch(players, (value) => {
 
 })
 
-
+const hapticsVibrate = async () => {
+  await Haptics.vibrate();
+};
 
 const checkClickPosition = (e) => {
   const bottomBoundary = window.innerHeight / 2
@@ -118,6 +121,8 @@ const checkClickPosition = (e) => {
   if (e.clientY >= bottomBoundary) {
     wrong.value++
 
+
+hapticsVibrate()
     savePlayerScore()
 
     bg.value = 'tw-bg-[#048b79]'
@@ -125,6 +130,8 @@ const checkClickPosition = (e) => {
       bg.value = 'tw-bg-black'
     }, 1000)
   } else {
+    hapticsVibrate()
+
     right.value++
     savePlayerScore()
 
