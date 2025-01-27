@@ -79,7 +79,22 @@ playerIndex = i;
 
   
 const changeStatus = () => {
-    players[playerIndex].turn = false;
+
+    let roundOver = false;
+    for (let i = 0; i < players.length; i++) {
+    if (players[i].turn == true) { 
+      roundOver = false;
+    } else {
+      roundOver = true;
+    }
+  }
+
+  if (roundOver == true) {
+    for (let i = 0; i < players.length; i++) {
+      players[i].turn = true;
+  }
+  }
+
 }
 
   watch(players, (value) => {
