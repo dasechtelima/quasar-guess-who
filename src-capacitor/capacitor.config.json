@@ -1,5 +1,5 @@
 {
   "appId": "org.capacitor.quasar.app",
   "appName": "Quasar GuessWho Game",
-  "webDir": "www"
+  "webDir": "../dist/spa"
 }

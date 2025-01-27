@@ -11,13 +11,13 @@
 
     <div class="we-flex tw-items-center tw-justify-center">
       <p
-        v-if="counter > 0"
+        v-if="!cTimer.isExpired.value"
         class="text-primary tw-font-Mitr tw-font-semibold tw-text-6xl tw-w-60 tw-text-center"
       >
-        {{ counter }}
+        {{ cTimer.seconds }}
       </p>
 
-      <p v-if="counter === 0" class="tw-font-Mitr tw-font-semibold tw-text-6xl tw-text-center">
+      <p v-if="cTimer.isExpired.value" class="tw-font-Mitr tw-font-semibold tw-text-6xl tw-text-center">
         {{ currentWord }}
       </p>
     </div>
@@ -29,7 +29,7 @@
     </p>
 
     <div
-      v-if="counter === 0"
+      v-if="cTimer.isExpired.value"
       class="tw-flex tw-col tw-absolute tw-w-40 tw-h-16 tw-bg-white tw-rounded-lg tw-bottom-5 tw-right-5 tw-items-center tw-justify-center"
     >
       <p class="tw-font-semibold tw-text-xl tw-text-black">  {{timer.seconds}} sek
@@ -51,6 +51,7 @@ import { ref } from 'vue'
 import { useTimer } from 'vue-timer-hook';
 import {  watchEffect, onMounted } from "vue";
 import { useRouter } from 'vue-router';
+import { Haptics} from '@capacitor/haptics';
 
 
 
@@ -67,6 +68,13 @@ const solutions = reactive([])
 const randomIndex = ref(Math.floor(Math.random() * words.value.length))
 
 const router = useRouter()
+
+const cTime = new Date();
+cTime.setSeconds(cTime.getSeconds() + 5);
+const cTimer = useTimer(cTime);
+
+
+
 const time = new Date();
 time.setSeconds(time.getSeconds() + 60);
 const timer = useTimer(time);
@@ -74,7 +82,6 @@ const timer = useTimer(time);
 onMounted(() => {
   watchEffect(async () => {
     if(timer.isExpired.value) {
-      players[playerIndex].turn = false
       router.push('/stats')
 
     }
@@ -91,6 +98,7 @@ for (let i = 0; i < players.length; i++) {
 console.log(players.length)
 if (players[i].turn == true) {
 playerIndex = i;
+players[i].turn = false
 break
 }
 
@@ -110,7 +118,9 @@ watch(players, (value) => {
 
 })
 
-
+const hapticsVibrate = async () => {
+  await Haptics.vibrate();
+};
 
 const checkClickPosition = (e) => {
   const bottomBoundary = window.innerHeight / 2
@@ -118,6 +128,8 @@ const checkClickPosition = (e) => {
   if (e.clientY >= bottomBoundary) {
     wrong.value++
 
+
+hapticsVibrate()
     savePlayerScore()
 
     bg.value = 'tw-bg-[#048b79]'
@@ -125,6 +137,8 @@ const checkClickPosition = (e) => {
       bg.value = 'tw-bg-black'
     }, 1000)
   } else {
+    hapticsVibrate()
+
     right.value++
     savePlayerScore()
 
