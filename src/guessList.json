@@ -1,65 +1,164 @@
 {
-    "words": [
-      {
-        "id": 1,
-        "word": "apple"
-      },
-      {
-        "id": 2,
-        "word": "banana"
-      },
-      {
-        "id": 3,
-        "word": "car"
-      },
-      {
-        "id": 4,
-        "word": "dog"
-      },
-      {
-        "id": 5,
-        "word": "elephant"
-      },
-      {
-        "id": 6,
-        "word": "football"
-      },
-      {
-        "id": 7,
-        "word": "guitar"
-      },
-      {
-        "id": 8,
-        "word": "house"
-      },
-      {
-        "id": 9,
-        "word": "jungle"
-      },
-      {
-        "id": 10,
-        "word": "kite"
-      },
-      {
-        "id": 11,
-        "word": "lemon"
-      },
-      {
-        "id": 12,
-        "word": "mountain"
-      },
-      {
-        "id": 13,
-        "word": "notebook"
-      },
-      {
-        "id": 14,
-        "word": "orange"
-      },
-      {
-        "id": 15,
-        "word": "piano"
-      }
-    ]
-  }
-  
+  "words": [
+    {
+      "id": 1,
+      "word": "Apfel"
+    },
+    {
+      "id": 2,
+      "word": "Banane"
+    },
+    {
+      "id": 3,
+      "word": "Conchita Wurst"
+    },
+    {
+      "id": 4,
+      "word": "David Alaba"
+    },
+    {
+      "id": 5,
+      "word": "Mozart"
+    },
+    {
+      "id": 6,
+      "word": "Arnold Schwarzenegger"
+    },
+    {
+      "id": 7,
+      "word": "Christoph Waltz"
+    },
+    {
+      "id": 8,
+      "word": "Marcel Hirscher"
+    },
+    {
+      "id": 9,
+      "word": "Sissi (Kaiserin Elisabeth von Österreich)"
+    },
+    {
+      "id": 10,
+      "word": "Felix Baumgartner"
+    },
+    {
+      "id": 11,
+      "word": "Tomate"
+    },
+    {
+      "id": 12,
+      "word": "Traube"
+    },
+    {
+      "id": 13,
+      "word": "Petra Oliva"
+    },
+    {
+      "id": 14,
+      "word": "Gerhard Sturm"
+    },
+    {
+      "id": 15,
+      "word": "Zuckerwatte"
+    },
+    {
+      "id": 16,
+      "word": "Sachertorte"
+    },
+    {
+      "id": 17,
+      "word": "Erdbeere"
+    },
+    {
+      "id": 18,
+      "word": "Pflaume"
+    },
+    {
+      "id": 19,
+      "word": "Apfelstrudel"
+    },
+    {
+      "id": 20,
+      "word": "Wolfgang Amadeus Mozart"
+    },
+    {
+      "id": 21,
+      "word": "Gustav Klimt"
+    },
+    {
+      "id": 22,
+      "word": "Sigmund Freud"
+    },
+    {
+      "id": 23,
+      "word": "Florian Weiss"
+    },
+    {
+      "id": 24,
+      "word": "Franz Stimpfl"
+    },
+    {
+      "id": 25,
+      "word": "Kirsche"
+    },
+    {
+      "id": 26,
+      "word": "Pfirsich"
+    },
+    {
+      "id": 27,
+      "word": "Tiger"
+    },
+    {
+      "id": 28,
+      "word": "Klavier"
+    },
+    {
+      "id": 29,
+      "word": "Geige"
+    },
+    {
+      "id": 30,
+      "word": "Fußball"
+    },
+    {
+      "id": 31,
+      "word": "Otto Waalkes"
+    },
+    {
+      "id": 32,
+      "word": "Arnold Schönberg"
+    },
+    {
+      "id": 33,
+      "word": "Skifahren"
+    },
+    {
+      "id": 34,
+      "word": "Alpen"
+    },
+    {
+      "id": 35,
+      "word": "Snowboard"
+    },
+    {
+      "id": 36,
+      "word": "Kaffee"
+    },
+    {
+      "id": 37,
+      "word": "Schnitzel"
+    },
+    {
+      "id": 38,
+      "word": "Kaiserschmarrn"
+    },
+    {
+      "id": 39,
+      "word": "Ludwig van Beethoven"
+    },
+    {
+      "id": 40,
+      "word": "Apfelkuchen"
+    }
+  ]
+}

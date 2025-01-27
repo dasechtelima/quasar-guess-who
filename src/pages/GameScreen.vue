@@ -17,7 +17,10 @@
         {{ cTimer.seconds }}
       </p>
 
-      <p v-if="cTimer.isExpired.value" class="tw-font-Mitr tw-font-semibold tw-text-6xl tw-text-center">
+      <p
+        v-if="cTimer.isExpired.value"
+        class="tw-font-Mitr tw-font-semibold tw-text-6xl tw-text-center"
+      >
         {{ currentWord }}
       </p>
     </div>
@@ -32,8 +35,7 @@
       v-if="cTimer.isExpired.value"
       class="tw-flex tw-col tw-absolute tw-w-40 tw-h-16 tw-bg-white tw-rounded-lg tw-bottom-5 tw-right-5 tw-items-center tw-justify-center"
     >
-      <p class="tw-font-semibold tw-text-xl tw-text-black">  {{timer.seconds}} sek
-      </p>
+      <p class="tw-font-semibold tw-text-xl tw-text-black">{{ timer.seconds }} sek</p>
     </div>
 
     <p class="tw-absolute tw-bottom-[8px] tw-left-24 tw-text-[60px] tw-text-[#048b79]">
@@ -46,15 +48,12 @@
 import guessData from '../guessList.json'
 
 import { useQuasar } from 'quasar'
-import { reactive,watch } from 'vue'
+import { reactive, watch } from 'vue'
 import { ref } from 'vue'
-import { useTimer } from 'vue-timer-hook';
-import {  watchEffect, onMounted } from "vue";
-import { useRouter } from 'vue-router';
-import { Haptics} from '@capacitor/haptics';
-
-
-
+import { useTimer } from 'vue-timer-hook'
+import { watchEffect, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+import { Haptics } from '@capacitor/haptics'
 
 const counter = ref(5)
 const right = ref(0)
@@ -69,21 +68,18 @@ const randomIndex = ref(Math.floor(Math.random() * words.value.length))
 
 const router = useRouter()
 
-const cTime = new Date();
-cTime.setSeconds(cTime.getSeconds() + 5);
-const cTimer = useTimer(cTime);
+const cTime = new Date()
+cTime.setSeconds(cTime.getSeconds() + 5)
+const cTimer = useTimer(cTime)
 
-
-
-const time = new Date();
-time.setSeconds(time.getSeconds() + 60);
-const timer = useTimer(time);
+const time = new Date()
+time.setSeconds(time.getSeconds() + 60)
+const timer = useTimer(time)
 
 onMounted(() => {
   watchEffect(async () => {
-    if(timer.isExpired.value) {
+    if (timer.isExpired.value) {
       router.push('/stats')
-
     }
   })
 })
@@ -91,36 +87,32 @@ onMounted(() => {
 const $q = useQuasar()
 
 const savedPlayers = $q.localStorage.getItem('players')
-players.push(...savedPlayers);
+players.push(...savedPlayers)
 
-let playerIndex = 0;
+let playerIndex = 0
 for (let i = 0; i < players.length; i++) {
-console.log(players.length)
-if (players[i].turn == true) {
-playerIndex = i;
-players[i].turn = false
-break
-}
-
+  console.log(players.length)
+  if (players[i].turn == true) {
+    playerIndex = i
+    players[i].turn = false
+    break
+  }
 }
 
 const currentPlayer = players[playerIndex].name
 
 const savePlayerScore = () => {
- 
   players[playerIndex].score = wrong.value
-
 }
 
 watch(players, (value) => {
   $q.localStorage.setItem('players', value)
   console.log($q.localStorage.getItem('players')[playerIndex])
-
 })
 
 const hapticsVibrate = async () => {
-  await Haptics.vibrate();
-};
+  await Haptics.vibrate()
+}
 
 const checkClickPosition = (e) => {
   const bottomBoundary = window.innerHeight / 2
@@ -128,8 +120,7 @@ const checkClickPosition = (e) => {
   if (e.clientY >= bottomBoundary) {
     wrong.value++
 
-
-hapticsVibrate()
+    hapticsVibrate()
     savePlayerScore()
 
     bg.value = 'tw-bg-[#048b79]'
@@ -153,7 +144,7 @@ hapticsVibrate()
     currentWord.value = words.value[randomIndex.value].word
     solutions.push(currentWord.value)
     players[playerIndex].solutions = solutions
-    }, 1000)
+  }, 1000)
 }
 
 const interval = setInterval(() => {
@@ -163,5 +154,4 @@ const interval = setInterval(() => {
     currentWord.value = words.value[randomIndex.value].word
   }
 }, 1000)
-
 </script>
